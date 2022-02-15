@@ -8,10 +8,11 @@ public class PortalGun : MonoBehaviour
     public float coolDownTime;
     public GameObject bluePortal, orangePortal, portalSpawn;
 
-    bool blueExist = false;
-    bool orangeExist = false;
-
     static public GameObject portalGun;
+    float shootSpeed = 10f;
+
+    float range = 50f;
+    Camera camera;
 
     void Start()
     {
@@ -21,12 +22,12 @@ public class PortalGun : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0) && !blueExist)         //fires portal with LMB
+        if (Input.GetMouseButtonDown(0))         //fires portal with LMB
         {
             ShootBluePortal();
         }
 
-        if (Input.GetMouseButtonDown(1) && !orangeExist)
+        if (Input.GetMouseButtonDown(1))
         {
             ShootOrangePortal();
         }
@@ -36,13 +37,27 @@ public class PortalGun : MonoBehaviour
 
     void ShootBluePortal()
     {
-        Instantiate(bluePortal, portalSpawn.transform.position, Quaternion.identity);
+        RaycastHit hit;
+        if(Physics.Raycast(camera.transform.position + camera.transform.forward, camera.transform.forward, out hit, range))
+        {
+            bluePortal.transform.position = hit.point;
+            bluePortal.transform.rotation = hit.transform.rotation;
+        }
+
 
     }
 
     void ShootOrangePortal()
     {
-        Instantiate(orangePortal, portalSpawn.transform.position, Quaternion.identity);
+        RaycastHit hit;
+        if (Physics.Raycast(camera.transform.position + camera.transform.forward, camera.transform.forward, out hit, range))
+        {
+            orangePortal.transform.position = hit.transform.position;
+            orangePortal.transform.rotation = hit.transform.rotation;
+
+        }
+
+
     }
 
 

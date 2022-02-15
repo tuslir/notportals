@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6609696652193814813}
   - component: {fileID: 8618819709153381879}
   - component: {fileID: 7091672364938052112}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Portal_box_10x5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

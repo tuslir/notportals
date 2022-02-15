@@ -22,6 +22,7 @@ public class Orange_Portal : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             player.transform.position = bluePortal.transform.position;
+            player.transform.rotation = bluePortal.transform.rotation;
         }
     }
 

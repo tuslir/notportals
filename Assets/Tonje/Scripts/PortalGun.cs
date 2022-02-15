@@ -5,13 +5,10 @@ using UnityEngine;
 public class PortalGun : MonoBehaviour
 {
 
-    public float coolDownTime;
     public GameObject bluePortal, orangePortal, portalSpawn;
-
     static public GameObject portalGun;
-    float shootSpeed = 10f;
 
-    float range = 50f;
+    public float range = 7f;
     Camera camera;
 
     void Start()
@@ -37,23 +34,32 @@ public class PortalGun : MonoBehaviour
 
     void ShootBluePortal()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if(Physics.Raycast(camera.transform.position + camera.transform.forward, camera.transform.forward, out hit, range))
+        if (Physics.Raycast(ray, out hit, range))
         {
+            Debug.Log(hit.collider.gameObject.name);
             bluePortal.transform.position = hit.point;
             bluePortal.transform.rotation = hit.transform.rotation;
         }
+
+
+
+
 
 
     }
 
     void ShootOrangePortal()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(camera.transform.position + camera.transform.forward, camera.transform.forward, out hit, range))
+        if (Physics.Raycast(ray, out hit, range))
         {
-            orangePortal.transform.position = hit.transform.position;
+            Debug.Log(hit.collider.gameObject.name);
+            orangePortal.transform.position = hit.point;
             orangePortal.transform.rotation = hit.transform.rotation;
+
 
         }
 

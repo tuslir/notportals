@@ -3,12 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PortalGun
+  - BluePortal
+  - OrangePortal
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Death
+  - PortalGun
   - Water
   - UI
   - NotPortal
